@@ -1,0 +1,212 @@
+<meta charset="utf-8">
+<title>Малък тих свят · 2030</title>
+<style>
+  :root {
+    --ground: #eef1ed;
+    --paper: #f7f9f6;
+    --ink: #2b332f;
+    --muted: #6b7a73;
+    --line: #c9d2cc;
+    --core: #3e7c74;      /* вътрешни системи */
+    --cap: #5a7a9b;       /* способности */
+    --next: #a3764a;      /* хоризонт */
+    --sea: #e2e8e3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #161a18;
+      --paper: #1d2220;
+      --ink: #dce3df;
+      --muted: #8fa098;
+      --line: #333c37;
+      --core: #7fb8ae;
+      --cap: #8fa9c6;
+      --next: #c99e72;
+      --sea: #1a1f1d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #161a18; --paper: #1d2220; --ink: #dce3df; --muted: #8fa098;
+    --line: #333c37; --core: #7fb8ae; --cap: #8fa9c6; --next: #c99e72; --sea: #1a1f1d;
+  }
+  :root[data-theme="light"] {
+    --ground: #eef1ed; --paper: #f7f9f6; --ink: #2b332f; --muted: #6b7a73;
+    --line: #c9d2cc; --core: #3e7c74; --cap: #5a7a9b; --next: #a3764a; --sea: #e2e8e3;
+  }
+
+  html { background: var(--ground); }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0;
+    padding: 3rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+
+  header { margin-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 .5rem;
+  }
+  h1 { font-size: 1.9rem; font-weight: 400; margin: 0 0 .35rem; text-wrap: balance; }
+  .sub { color: var(--muted); margin: 0; font-style: italic; }
+
+  figure { margin: 0 0 2.5rem; }
+  .map-frame {
+    background: var(--sea);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  svg text {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    fill: var(--ink);
+  }
+  .region-label { font-size: 14px; font-weight: 600; }
+  .place { font-size: 11.5px; fill: var(--muted); }
+  .sea-label { font-size: 11px; fill: var(--muted); font-style: italic; letter-spacing: .18em; }
+
+  .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+  }
+  .card h2 {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+    margin: 0 0 .6rem; display: flex; align-items: center; gap: .5rem;
+  }
+  .dot { width: .55rem; height: .55rem; border-radius: 50%; flex: none; }
+  .card ul { margin: 0; padding-left: 1.1rem; font-size: .92rem; }
+  .card li { margin-bottom: .3rem; }
+  .card li:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 2.5rem; color: var(--muted);
+    font-size: .85rem; font-style: italic;
+    border-top: 1px solid var(--line); padding-top: 1rem;
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Скица · без претенции</p>
+    <h1>Малък тих работещ свят, 2030</h1>
+    <p class="sub">Три острова в спокойно море: какво върти системата отвътре, какво умее навън, и какво се задава на хоризонта.</p>
+  </header>
+
+  <figure>
+    <div class="map-frame">
+      <svg viewBox="0 0 860 540" role="img" aria-label="Карта с три острова: Вътрешни системи, Способности и Хоризонт 2030">
+        <!-- фини вълни -->
+        <g stroke="var(--line)" stroke-width="1" fill="none" opacity=".5">
+          <path d="M40 500 q 20 -6 40 0 t 40 0"/>
+          <path d="M700 60 q 20 -6 40 0 t 40 0"/>
+          <path d="M60 80 q 20 -6 40 0"/>
+          <path d="M760 480 q 20 -6 40 0"/>
+        </g>
+        <text class="sea-label" x="430" y="510" text-anchor="middle">ТИХО МОРЕ ОТ ДАННИ</text>
+
+        <!-- пътеки между островите -->
+        <g stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 6" fill="none" opacity=".8">
+          <path d="M330 250 C 400 220, 460 200, 530 185"/>
+          <path d="M300 310 C 380 370, 460 395, 545 400"/>
+          <path d="M600 240 C 615 290, 620 320, 615 355"/>
+        </g>
+
+        <!-- Остров 1: Вътрешни системи -->
+        <g>
+          <path d="M120 190 C 100 150, 150 110, 210 115 C 270 100, 330 130, 345 180
+                   C 365 230, 330 290, 280 315 C 230 345, 155 330, 130 285 C 105 250, 130 225, 120 190 Z"
+                fill="var(--paper)" stroke="var(--core)" stroke-width="2"/>
+          <text class="region-label" x="228" y="160" text-anchor="middle" fill="var(--core)">ВЪТРЕШНИ СИСТЕМИ</text>
+          <g>
+            <circle cx="175" cy="205" r="3" fill="var(--core)"/>
+            <text class="place" x="185" y="209">Памет · дълга и работна</text>
+            <circle cx="170" cy="240" r="3" fill="var(--core)"/>
+            <text class="place" x="180" y="244">Планиране на стъпки</text>
+            <circle cx="180" cy="275" r="3" fill="var(--core)"/>
+            <text class="place" x="190" y="279">Самопроверка</text>
+            <circle cx="230" cy="300" r="3" fill="var(--core)"/>
+            <text class="place" x="240" y="304">Кеш и контекст</text>
+          </g>
+        </g>
+
+        <!-- Остров 2: Способности -->
+        <g>
+          <path d="M520 120 C 510 85, 560 55, 620 62 C 680 55, 730 85, 738 130
+                   C 750 175, 715 225, 660 240 C 605 258, 540 235, 525 190 C 512 160, 528 148, 520 120 Z"
+                fill="var(--paper)" stroke="var(--cap)" stroke-width="2"/>
+          <text class="region-label" x="628" y="100" text-anchor="middle" fill="var(--cap)">СПОСОБНОСТИ</text>
+          <g>
+            <circle cx="565" cy="140" r="3" fill="var(--cap)"/>
+            <text class="place" x="575" y="144">Инструменти и код</text>
+            <circle cx="560" cy="175" r="3" fill="var(--cap)"/>
+            <text class="place" x="570" y="179">Дълги задачи без надзор</text>
+            <circle cx="575" cy="210" r="3" fill="var(--cap)"/>
+            <text class="place" x="585" y="214">Текст · образ · звук</text>
+          </g>
+        </g>
+
+        <!-- Остров 3: Хоризонт 2030 -->
+        <g>
+          <path d="M560 390 C 550 355, 600 330, 655 338 C 715 330, 765 360, 770 405
+                   C 780 445, 740 485, 685 492 C 630 502, 570 478, 562 435 C 556 415, 566 410, 560 390 Z"
+                fill="var(--paper)" stroke="var(--next)" stroke-width="2"/>
+          <text class="region-label" x="665" y="372" text-anchor="middle" fill="var(--next)">ХОРИЗОНТ · НЕКСТ ГЕН</text>
+          <g>
+            <circle cx="605" cy="405" r="3" fill="var(--next)"/>
+            <text class="place" x="615" y="409">Постоянна памет между сесии</text>
+            <circle cx="600" cy="438" r="3" fill="var(--next)"/>
+            <text class="place" x="610" y="442">Екипи от агенти</text>
+            <circle cx="615" cy="470" r="3" fill="var(--next)"/>
+            <text class="place" x="625" y="474">Учене в движение</text>
+          </g>
+        </g>
+
+        <!-- компас -->
+        <g transform="translate(70, 440)" stroke="var(--muted)" fill="none" opacity=".8">
+          <circle r="18"/>
+          <path d="M0 -18 L4 0 L0 18 L-4 0 Z" fill="var(--muted)" stroke="none"/>
+          <text class="place" y="-26" text-anchor="middle">С</text>
+        </g>
+      </svg>
+    </div>
+  </figure>
+
+  <div class="legend">
+    <section class="card">
+      <h2><span class="dot" style="background:var(--core)"></span>Вътрешни системи</h2>
+      <ul>
+        <li>Памет — работна за задачата, дълга за човека и проектите.</li>
+        <li>Планиране — разбива голямото на малки проверими стъпки.</li>
+        <li>Самопроверка — хваща собствените си грешки, преди да ги видиш ти.</li>
+        <li>Контекст — помни разговора, без да го носи целия наведнъж.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--cap)"></span>Способности днес</h2>
+      <ul>
+        <li>Пише и поправя код, борави с файлове и инструменти.</li>
+        <li>Работи с часове по една задача без постоянен надзор.</li>
+        <li>Разбира текст, изображения, таблици, документи.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--next)"></span>Какво се очаква</h2>
+      <ul>
+        <li>Памет, която не се губи между разговорите.</li>
+        <li>Няколко агента, които си делят работата като екип.</li>
+        <li>Модели, които се учат от твоя начин на работа.</li>
+        <li>По-евтино, по-бързо, по-тихо — без драма.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>Малък свят. Работи си тихо. Нищо не е раздуто.</footer>
+</div>
