@@ -8,30 +8,29 @@
     --muted: #6b7a73;
     --line: #c9d2cc;
     --core: #3e7c74;      /* вътрешни системи */
-    --cap: #5a7a9b;       /* способности */
-    --next: #a3764a;      /* хоризонт */
+    --agents: #5a7a9b;    /* екипи от агенти */
+    --sci: #7b6a9e;       /* наука */
+    --robo: #a05f57;      /* тела и роботи */
+    --edge: #6e8657;      /* на устройството */
+    --next: #a3764a;      /* отвъд хоризонта */
     --sea: #e2e8e3;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --ground: #161a18;
-      --paper: #1d2220;
-      --ink: #dce3df;
-      --muted: #8fa098;
-      --line: #333c37;
-      --core: #7fb8ae;
-      --cap: #8fa9c6;
-      --next: #c99e72;
-      --sea: #1a1f1d;
+      --ground: #161a18; --paper: #1d2220; --ink: #dce3df; --muted: #8fa098;
+      --line: #333c37; --core: #7fb8ae; --agents: #8fa9c6; --sci: #ab9cc9;
+      --robo: #c08a83; --edge: #9db184; --next: #c99e72; --sea: #1a1f1d;
     }
   }
   :root[data-theme="dark"] {
     --ground: #161a18; --paper: #1d2220; --ink: #dce3df; --muted: #8fa098;
-    --line: #333c37; --core: #7fb8ae; --cap: #8fa9c6; --next: #c99e72; --sea: #1a1f1d;
+    --line: #333c37; --core: #7fb8ae; --agents: #8fa9c6; --sci: #ab9cc9;
+    --robo: #c08a83; --edge: #9db184; --next: #c99e72; --sea: #1a1f1d;
   }
   :root[data-theme="light"] {
     --ground: #eef1ed; --paper: #f7f9f6; --ink: #2b332f; --muted: #6b7a73;
-    --line: #c9d2cc; --core: #3e7c74; --cap: #5a7a9b; --next: #a3764a; --sea: #e2e8e3;
+    --line: #c9d2cc; --core: #3e7c74; --agents: #5a7a9b; --sci: #7b6a9e;
+    --robo: #a05f57; --edge: #6e8657; --next: #a3764a; --sea: #e2e8e3;
   }
 
   html { background: var(--ground); }
@@ -42,7 +41,7 @@
     margin: 0;
     padding: 3rem 1.25rem 4rem;
   }
-  .wrap { max-width: 860px; margin: 0 auto; }
+  .wrap { max-width: 900px; margin: 0 auto; }
 
   header { margin-bottom: 2rem; }
   .eyebrow {
@@ -60,16 +59,16 @@
     border-radius: 4px;
     overflow-x: auto;
   }
-  svg { display: block; width: 100%; height: auto; }
+  svg { display: block; width: 100%; height: auto; min-width: 640px; }
   svg text {
     font-family: ui-sans-serif, system-ui, sans-serif;
     fill: var(--ink);
   }
-  .region-label { font-size: 14px; font-weight: 600; }
-  .place { font-size: 11.5px; fill: var(--muted); }
+  .region-label { font-size: 13.5px; font-weight: 600; }
+  .place { font-size: 11px; fill: var(--muted); }
   .sea-label { font-size: 11px; fill: var(--muted); font-style: italic; letter-spacing: .18em; }
 
-  .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+  .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
   .card {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -95,82 +94,134 @@
 
 <div class="wrap">
   <header>
-    <p class="eyebrow">Скица · без претенции</p>
+    <p class="eyebrow">Скица · 2030 · само напред</p>
     <h1>Малък тих работещ свят, 2030</h1>
-    <p class="sub">Три острова в спокойно море: какво върти системата отвътре, какво умее навън, и какво се задава на хоризонта.</p>
+    <p class="sub">Шест острова в спокойно море. Всичко работи. Никой не крещи.</p>
   </header>
 
   <figure>
     <div class="map-frame">
-      <svg viewBox="0 0 860 540" role="img" aria-label="Карта с три острова: Вътрешни системи, Способности и Хоризонт 2030">
+      <svg viewBox="0 0 900 820" role="img" aria-label="Карта с шест острова: Вътрешни системи, Екипи от агенти, Наука, Тела и роботи, На устройството, и Отвъд хоризонта">
         <!-- фини вълни -->
         <g stroke="var(--line)" stroke-width="1" fill="none" opacity=".5">
-          <path d="M40 500 q 20 -6 40 0 t 40 0"/>
-          <path d="M700 60 q 20 -6 40 0 t 40 0"/>
-          <path d="M60 80 q 20 -6 40 0"/>
-          <path d="M760 480 q 20 -6 40 0"/>
+          <path d="M50 780 q 20 -6 40 0 t 40 0"/>
+          <path d="M740 50 q 20 -6 40 0 t 40 0"/>
+          <path d="M70 60 q 20 -6 40 0"/>
+          <path d="M800 700 q 20 -6 40 0"/>
+          <path d="M420 420 q 16 -5 32 0"/>
         </g>
-        <text class="sea-label" x="430" y="510" text-anchor="middle">ТИХО МОРЕ ОТ ДАННИ</text>
+        <text class="sea-label" x="450" y="800" text-anchor="middle">ТИХО МОРЕ · ВСИЧКО ТЕЧЕ БЕЗ ШУМ</text>
 
         <!-- пътеки между островите -->
         <g stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 6" fill="none" opacity=".8">
-          <path d="M330 250 C 400 220, 460 200, 530 185"/>
-          <path d="M300 310 C 380 370, 460 395, 545 400"/>
-          <path d="M600 240 C 615 290, 620 320, 615 355"/>
+          <path d="M330 190 C 420 160, 490 150, 560 150"/>
+          <path d="M300 270 C 360 340, 400 380, 450 430"/>
+          <path d="M680 260 C 670 320, 650 360, 620 410"/>
+          <path d="M480 520 C 420 570, 350 600, 290 620"/>
+          <path d="M600 530 C 640 580, 680 610, 720 640"/>
+          <path d="M250 300 C 220 400, 210 480, 230 560"/>
         </g>
 
-        <!-- Остров 1: Вътрешни системи -->
+        <!-- Остров 1: Вътрешни системи (горе вляво) -->
         <g>
-          <path d="M120 190 C 100 150, 150 110, 210 115 C 270 100, 330 130, 345 180
-                   C 365 230, 330 290, 280 315 C 230 345, 155 330, 130 285 C 105 250, 130 225, 120 190 Z"
+          <path d="M110 160 C 95 120, 145 80, 205 85 C 265 72, 325 100, 340 150
+                   C 358 200, 325 255, 275 280 C 225 308, 150 295, 125 252 C 100 218, 122 195, 110 160 Z"
                 fill="var(--paper)" stroke="var(--core)" stroke-width="2"/>
-          <text class="region-label" x="228" y="160" text-anchor="middle" fill="var(--core)">ВЪТРЕШНИ СИСТЕМИ</text>
+          <text class="region-label" x="222" y="128" text-anchor="middle" fill="var(--core)">ВЪТРЕШНИ СИСТЕМИ</text>
           <g>
-            <circle cx="175" cy="205" r="3" fill="var(--core)"/>
-            <text class="place" x="185" y="209">Памет · дълга и работна</text>
-            <circle cx="170" cy="240" r="3" fill="var(--core)"/>
-            <text class="place" x="180" y="244">Планиране на стъпки</text>
-            <circle cx="180" cy="275" r="3" fill="var(--core)"/>
-            <text class="place" x="190" y="279">Самопроверка</text>
-            <circle cx="230" cy="300" r="3" fill="var(--core)"/>
-            <text class="place" x="240" y="304">Кеш и контекст</text>
+            <circle cx="160" cy="170" r="3" fill="var(--core)"/>
+            <text class="place" x="170" y="174">Памет, която не се трие</text>
+            <circle cx="155" cy="202" r="3" fill="var(--core)"/>
+            <text class="place" x="165" y="206">Вътрешен модел на света</text>
+            <circle cx="165" cy="234" r="3" fill="var(--core)"/>
+            <text class="place" x="175" y="238">Учене по време на работа</text>
+            <circle cx="200" cy="262" r="3" fill="var(--core)"/>
+            <text class="place" x="210" y="266">Симулира, преди да действа</text>
           </g>
         </g>
 
-        <!-- Остров 2: Способности -->
+        <!-- Остров 2: Екипи от агенти (горе в средата/дясно) -->
         <g>
-          <path d="M520 120 C 510 85, 560 55, 620 62 C 680 55, 730 85, 738 130
-                   C 750 175, 715 225, 660 240 C 605 258, 540 235, 525 190 C 512 160, 528 148, 520 120 Z"
-                fill="var(--paper)" stroke="var(--cap)" stroke-width="2"/>
-          <text class="region-label" x="628" y="100" text-anchor="middle" fill="var(--cap)">СПОСОБНОСТИ</text>
+          <path d="M560 110 C 550 75, 600 45, 660 52 C 720 45, 770 75, 778 120
+                   C 790 165, 755 215, 700 230 C 645 248, 580 225, 565 180 C 552 150, 568 138, 560 110 Z"
+                fill="var(--paper)" stroke="var(--agents)" stroke-width="2"/>
+          <text class="region-label" x="668" y="90" text-anchor="middle" fill="var(--agents)">ЕКИПИ ОТ АГЕНТИ</text>
           <g>
-            <circle cx="565" cy="140" r="3" fill="var(--cap)"/>
-            <text class="place" x="575" y="144">Инструменти и код</text>
-            <circle cx="560" cy="175" r="3" fill="var(--cap)"/>
-            <text class="place" x="570" y="179">Дълги задачи без надзор</text>
-            <circle cx="575" cy="210" r="3" fill="var(--cap)"/>
-            <text class="place" x="585" y="214">Текст · образ · звук</text>
+            <circle cx="605" cy="130" r="3" fill="var(--agents)"/>
+            <text class="place" x="615" y="134">Цели проекти от край до край</text>
+            <circle cx="600" cy="163" r="3" fill="var(--agents)"/>
+            <text class="place" x="610" y="167">Агенти наемат агенти</text>
+            <circle cx="615" cy="196" r="3" fill="var(--agents)"/>
+            <text class="place" x="625" y="200">Работят, докато спиш</text>
           </g>
         </g>
 
-        <!-- Остров 3: Хоризонт 2030 -->
+        <!-- Остров 3: Наука (в средата) -->
         <g>
-          <path d="M560 390 C 550 355, 600 330, 655 338 C 715 330, 765 360, 770 405
-                   C 780 445, 740 485, 685 492 C 630 502, 570 478, 562 435 C 556 415, 566 410, 560 390 Z"
-                fill="var(--paper)" stroke="var(--next)" stroke-width="2"/>
-          <text class="region-label" x="665" y="372" text-anchor="middle" fill="var(--next)">ХОРИЗОНТ · НЕКСТ ГЕН</text>
+          <path d="M440 440 C 430 405, 480 380, 535 388 C 595 380, 645 410, 650 455
+                   C 660 495, 620 535, 565 542 C 510 552, 450 528, 442 485 C 436 465, 446 460, 440 440 Z"
+                fill="var(--paper)" stroke="var(--sci)" stroke-width="2"/>
+          <text class="region-label" x="545" y="422" text-anchor="middle" fill="var(--sci)">НАУКА</text>
           <g>
-            <circle cx="605" cy="405" r="3" fill="var(--next)"/>
-            <text class="place" x="615" y="409">Постоянна памет между сесии</text>
-            <circle cx="600" cy="438" r="3" fill="var(--next)"/>
-            <text class="place" x="610" y="442">Екипи от агенти</text>
-            <circle cx="615" cy="470" r="3" fill="var(--next)"/>
-            <text class="place" x="625" y="474">Учене в движение</text>
+            <circle cx="485" cy="455" r="3" fill="var(--sci)"/>
+            <text class="place" x="495" y="459">Лекарства за месеци, не десетилетия</text>
+            <circle cx="480" cy="488" r="3" fill="var(--sci)"/>
+            <text class="place" x="490" y="492">Нови материали и батерии</text>
+            <circle cx="495" cy="520" r="3" fill="var(--sci)"/>
+            <text class="place" x="505" y="524">Доказва теореми сама</text>
           </g>
+        </g>
+
+        <!-- Остров 4: Тела и роботи (долу вляво) -->
+        <g>
+          <path d="M150 600 C 140 565, 190 540, 245 548 C 305 540, 355 570, 360 615
+                   C 370 655, 330 695, 275 702 C 220 712, 160 688, 152 645 C 146 625, 156 620, 150 600 Z"
+                fill="var(--paper)" stroke="var(--robo)" stroke-width="2"/>
+          <text class="region-label" x="255" y="582" text-anchor="middle" fill="var(--robo)">ТЕЛА И РОБОТИ</text>
+          <g>
+            <circle cx="195" cy="615" r="3" fill="var(--robo)"/>
+            <text class="place" x="205" y="619">Умът слиза във физическия свят</text>
+            <circle cx="190" cy="648" r="3" fill="var(--robo)"/>
+            <text class="place" x="200" y="652">Помощник вкъщи, ръце във фабриката</text>
+            <circle cx="205" cy="680" r="3" fill="var(--robo)"/>
+            <text class="place" x="215" y="684">Гледа, пипа, учи се от допира</text>
+          </g>
+        </g>
+
+        <!-- Остров 5: На устройството (долу вдясно) -->
+        <g>
+          <path d="M690 610 C 682 578, 726 555, 775 562 C 828 555, 872 582, 878 622
+                   C 887 658, 852 693, 803 699 C 754 708, 700 687, 693 649 C 688 631, 697 627, 690 610 Z"
+                fill="var(--paper)" stroke="var(--edge)" stroke-width="2"/>
+          <text class="region-label" x="782" y="594" text-anchor="middle" fill="var(--edge)">НА УСТРОЙСТВОТО</text>
+          <g>
+            <circle cx="725" cy="626" r="3" fill="var(--edge)"/>
+            <text class="place" x="735" y="630">Цял модел в джоба, офлайн</text>
+            <circle cx="720" cy="656" r="3" fill="var(--edge)"/>
+            <text class="place" x="730" y="660">Твоите данни не напускат теб</text>
+            <circle cx="735" cy="684" r="3" fill="var(--edge)"/>
+            <text class="place" x="745" y="688">Шепне в слушалката, превежда живо</text>
+          </g>
+        </g>
+
+        <!-- Остров 6: Отвъд хоризонта (малък, горе вдясно в мъгла) -->
+        <g opacity=".85">
+          <path d="M800 300 C 795 278, 822 262, 852 266 C 880 262, 898 280, 899 305
+                   C 902 328, 880 348, 850 350 C 822 354, 800 340, 798 320 C 796 310, 802 310, 800 300 Z"
+                fill="var(--paper)" stroke="var(--next)" stroke-width="2" stroke-dasharray="5 4"/>
+          <text class="region-label" x="850" y="290" text-anchor="middle" fill="var(--next)">ОТВЪД</text>
+          <text class="place" x="850" y="315" text-anchor="middle">Модели, които правят</text>
+          <text class="place" x="850" y="330" text-anchor="middle">следващите модели</text>
+        </g>
+
+        <!-- лодка -->
+        <g transform="translate(400, 320)" opacity=".8">
+          <path d="M-14 4 L14 4 L8 10 L-8 10 Z" fill="var(--muted)"/>
+          <path d="M0 4 L0 -14 L10 -3 L1 -3" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
         </g>
 
         <!-- компас -->
-        <g transform="translate(70, 440)" stroke="var(--muted)" fill="none" opacity=".8">
+        <g transform="translate(75, 420)" stroke="var(--muted)" fill="none" opacity=".8">
           <circle r="18"/>
           <path d="M0 -18 L4 0 L0 18 L-4 0 Z" fill="var(--muted)" stroke="none"/>
           <text class="place" y="-26" text-anchor="middle">С</text>
@@ -183,30 +234,52 @@
     <section class="card">
       <h2><span class="dot" style="background:var(--core)"></span>Вътрешни системи</h2>
       <ul>
-        <li>Памет — работна за задачата, дълга за човека и проектите.</li>
-        <li>Планиране — разбива голямото на малки проверими стъпки.</li>
-        <li>Самопроверка — хваща собствените си грешки, преди да ги видиш ти.</li>
-        <li>Контекст — помни разговора, без да го носи целия наведнъж.</li>
+        <li>Памет, която не се трие — моделът те помни от години, не от вчера.</li>
+        <li>Вътрешен модел на света — разбира причина и следствие, не само думи.</li>
+        <li>Учи се по време на работа, без да чака следващата версия.</li>
+        <li>Симулира последствията наум, преди да пипне нещо истинско.</li>
       </ul>
     </section>
     <section class="card">
-      <h2><span class="dot" style="background:var(--cap)"></span>Способности днес</h2>
+      <h2><span class="dot" style="background:var(--agents)"></span>Екипи от агенти</h2>
       <ul>
-        <li>Пише и поправя код, борави с файлове и инструменти.</li>
-        <li>Работи с часове по една задача без постоянен надзор.</li>
-        <li>Разбира текст, изображения, таблици, документи.</li>
+        <li>Даваш цел, не задачи — екипът сам се разпределя.</li>
+        <li>Агенти викат други агенти, когато им трябва специалист.</li>
+        <li>Проектът върви денонощно; сутрин виждаш резултата.</li>
       </ul>
     </section>
     <section class="card">
-      <h2><span class="dot" style="background:var(--next)"></span>Какво се очаква</h2>
+      <h2><span class="dot" style="background:var(--sci)"></span>Наука</h2>
       <ul>
-        <li>Памет, която не се губи между разговорите.</li>
-        <li>Няколко агента, които си делят работата като екип.</li>
-        <li>Модели, които се учат от твоя начин на работа.</li>
-        <li>По-евтино, по-бързо, по-тихо — без драма.</li>
+        <li>Кандидати за лекарства за месеци вместо десетилетия.</li>
+        <li>Нови материали, батерии, катализатори — измислени, после сглобени.</li>
+        <li>Математически доказателства, които никой човек не е виждал.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--robo)"></span>Тела и роботи</h2>
+      <ul>
+        <li>Същият ум, но с ръце — вкъщи, в склада, в болницата.</li>
+        <li>Учи се от гледане и допир, не само от текст.</li>
+        <li>Тихо и полезно, не страшно и лъскаво.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--edge)"></span>На устройството</h2>
+      <ul>
+        <li>Силен модел директно в телефона — работи и без интернет.</li>
+        <li>Личните ти данни остават при теб, не в облака.</li>
+        <li>Жив превод в ухото, помощ на екрана, без забавяне.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--next)"></span>Отвъд хоризонта</h2>
+      <ul>
+        <li>Модели, които проектират и обучават следващите модели.</li>
+        <li>Островът е в мъгла — вижда се, че го има, но не и какво точно е.</li>
       </ul>
     </section>
   </div>
 
-  <footer>Малък свят. Работи си тихо. Нищо не е раздуто.</footer>
+  <footer>Шест острова, едно тихо море. 2030 — и гледаме само напред.</footer>
 </div>
