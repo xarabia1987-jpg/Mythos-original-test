@@ -1,0 +1,356 @@
+<meta charset="utf-8">
+<title>Малък тих свят · 2035 · хипотеза</title>
+<style>
+  :root {
+    --ground: #edefec;
+    --paper: #f7f9f6;
+    --ink: #2b332f;
+    --muted: #6b7a73;
+    --line: #c9d2cc;
+    --forge: #a3764a;     /* Ковачницата — бившият мъглив остров */
+    --sci: #7b6a9e;       /* науката-фабрика */
+    --infra: #5f7d8c;     /* тихата инфраструктура */
+    --robo: #a05f57;      /* роботите са мебел */
+    --agents: #5a7a9b;    /* икономика на агентите */
+    --human: #8a7a4f;     /* островът на хората */
+    --light: #3e7c74;     /* фаровете */
+    --fog: #9aa8a0;       /* 2040 */
+    --sea: #e2e8e3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #161a18; --paper: #1d2220; --ink: #dce3df; --muted: #8fa098;
+      --line: #333c37; --forge: #c99e72; --sci: #ab9cc9; --infra: #8fa9b6;
+      --robo: #c08a83; --agents: #8fa9c6; --human: #bfae7d; --light: #7fb8ae;
+      --fog: #6d7a73; --sea: #1a1f1d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #161a18; --paper: #1d2220; --ink: #dce3df; --muted: #8fa098;
+    --line: #333c37; --forge: #c99e72; --sci: #ab9cc9; --infra: #8fa9b6;
+    --robo: #c08a83; --agents: #8fa9c6; --human: #bfae7d; --light: #7fb8ae;
+    --fog: #6d7a73; --sea: #1a1f1d;
+  }
+  :root[data-theme="light"] {
+    --ground: #edefec; --paper: #f7f9f6; --ink: #2b332f; --muted: #6b7a73;
+    --line: #c9d2cc; --forge: #a3764a; --sci: #7b6a9e; --infra: #5f7d8c;
+    --robo: #a05f57; --agents: #5a7a9b; --human: #8a7a4f; --light: #3e7c74;
+    --fog: #9aa8a0; --sea: #e2e8e3;
+  }
+
+  html { background: var(--ground); }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0;
+    padding: 3rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+
+  header { margin-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 .5rem;
+  }
+  h1 { font-size: 1.9rem; font-weight: 400; margin: 0 0 .35rem; text-wrap: balance; }
+  .sub { color: var(--muted); margin: 0; font-style: italic; max-width: 62ch; }
+
+  figure { margin: 0 0 2.5rem; }
+  .map-frame {
+    background: var(--sea);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  svg { display: block; width: 100%; height: auto; min-width: 660px; }
+  svg text { font-family: ui-sans-serif, system-ui, sans-serif; fill: var(--ink); }
+  .region-label { font-size: 13.5px; font-weight: 600; }
+  .place { font-size: 11px; fill: var(--muted); }
+  .sea-label { font-size: 11px; fill: var(--muted); font-style: italic; letter-spacing: .18em; }
+
+  .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+  }
+  .card h2 {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+    margin: 0 0 .6rem; display: flex; align-items: center; gap: .5rem;
+  }
+  .dot { width: .55rem; height: .55rem; border-radius: 50%; flex: none; }
+  .card ul { margin: 0; padding-left: 1.1rem; font-size: .92rem; }
+  .card li { margin-bottom: .3rem; }
+  .card li:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 2.5rem; color: var(--muted);
+    font-size: .85rem; font-style: italic;
+    border-top: 1px solid var(--line); padding-top: 1rem;
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Скица · 2035 · хипотеза, не прогноза</p>
+    <h1>Пет години по-късно: светът около Ковачницата</h1>
+    <p class="sub">Помниш ли малкия мъглив остров „Отвъд" от картата на 2030? Мъглата се вдигна. Оказа се цял континент — и сега всичко останало се върти около него. Светът пак е тих. Само дето вече е по-голям.</p>
+  </header>
+
+  <figure>
+    <div class="map-frame">
+      <svg viewBox="0 0 920 880" role="img" aria-label="Карта на 2035: в центъра Ковачницата, около нея шест острова и мъглив остров 2040">
+
+        <!-- следа от стария свят, горе вляво -->
+        <g opacity=".45">
+          <path d="M40 80 C 35 60, 60 45, 90 48 C 118 45, 138 60, 140 82
+                   C 143 102, 122 118, 95 120 C 68 124, 44 112, 42 95 Z"
+                fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 5"/>
+          <text class="place" x="90" y="78" text-anchor="middle">старият свят</text>
+          <text class="place" x="90" y="93" text-anchor="middle">· 2030 ·</text>
+        </g>
+        <!-- маршрутът, по който дойдохме -->
+        <g stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 6" fill="none" opacity=".8">
+          <path d="M145 110 C 240 180, 330 260, 400 340"/>
+        </g>
+        <text class="place" x="255" y="205" transform="rotate(38 255 205)" opacity=".7">маршрутът от 2030</text>
+
+        <!-- ЦЕНТЪР: Ковачницата (бившият остров Отвъд) -->
+        <g>
+          <path d="M390 350 C 375 305, 430 270, 495 278 C 560 268, 620 300, 630 355
+                   C 645 405, 605 455, 545 468 C 485 483, 410 458, 398 410 C 390 385, 398 375, 390 350 Z"
+                fill="var(--paper)" stroke="var(--forge)" stroke-width="2.5"/>
+          <text class="region-label" x="510" y="315" text-anchor="middle" fill="var(--forge)">КОВАЧНИЦАТА</text>
+          <text class="place" x="510" y="332" text-anchor="middle" font-style="italic">бившият мъглив остров „Отвъд“</text>
+          <g>
+            <circle cx="440" cy="360" r="3" fill="var(--forge)"/>
+            <text class="place" x="450" y="364">Модели коват следващите модели</text>
+            <circle cx="435" cy="392" r="3" fill="var(--forge)"/>
+            <text class="place" x="445" y="396">Всяка нова версия — през проверка</text>
+            <circle cx="450" cy="424" r="3" fill="var(--forge)"/>
+            <text class="place" x="460" y="428">Бавно нарочно: духалото има спирачка</text>
+          </g>
+        </g>
+
+        <!-- пътеки от Ковачницата към всички -->
+        <g stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 6" fill="none" opacity=".8">
+          <path d="M430 300 C 370 240, 320 200, 260 170"/>
+          <path d="M600 295 C 660 240, 700 205, 745 180"/>
+          <path d="M640 390 C 710 400, 760 415, 800 435"/>
+          <path d="M600 460 C 650 520, 690 560, 720 600"/>
+          <path d="M470 470 C 440 540, 410 590, 380 640"/>
+          <path d="M395 410 C 320 440, 260 460, 200 470"/>
+        </g>
+
+        <!-- Остров: Науката-фабрика (горе вляво) -->
+        <g>
+          <path d="M150 120 C 140 88, 185 62, 240 70 C 295 62, 340 90, 345 130
+                   C 353 168, 318 202, 268 208 C 218 216, 160 195, 153 158 C 148 140, 156 137, 150 120 Z"
+                fill="var(--paper)" stroke="var(--sci)" stroke-width="2"/>
+          <text class="region-label" x="248" y="105" text-anchor="middle" fill="var(--sci)">НАУКАТА-ФАБРИКА</text>
+          <g>
+            <circle cx="190" cy="132" r="3" fill="var(--sci)"/>
+            <text class="place" x="200" y="136">Откритието стана поточна линия</text>
+            <circle cx="185" cy="162" r="3" fill="var(--sci)"/>
+            <text class="place" x="195" y="166">Лекарства по мярка за един човек</text>
+            <circle cx="200" cy="190" r="3" fill="var(--sci)"/>
+            <text class="place" x="210" y="194">Чиста енергия — вече скучна тема</text>
+          </g>
+        </g>
+
+        <!-- Остров: Икономика на агентите (горе вдясно) -->
+        <g>
+          <path d="M700 120 C 692 90, 735 66, 788 73 C 840 66, 882 92, 887 130
+                   C 895 165, 862 197, 815 203 C 768 211, 712 192, 705 157 C 700 140, 708 136, 700 120 Z"
+                fill="var(--paper)" stroke="var(--agents)" stroke-width="2"/>
+          <text class="region-label" x="793" y="106" text-anchor="middle" fill="var(--agents)">АГЕНТНАТА ИКОНОМИКА</text>
+          <g>
+            <circle cx="738" cy="133" r="3" fill="var(--agents)"/>
+            <text class="place" x="748" y="137">Фирма: един човек, хиляда агента</text>
+            <circle cx="733" cy="161" r="3" fill="var(--agents)"/>
+            <text class="place" x="743" y="165">Софтуерът се пише и поддържа сам</text>
+            <circle cx="748" cy="188" r="3" fill="var(--agents)"/>
+            <text class="place" x="758" y="192">Агенти търгуват с агенти</text>
+          </g>
+        </g>
+
+        <!-- Остров: Тихата инфраструктура (вдясно в средата) -->
+        <g>
+          <path d="M790 450 C 783 420, 823 398, 868 404 C 910 400, 918 430, 916 460
+                   C 916 492, 888 516, 845 520 C 803 526, 793 500, 790 480 Z"
+                fill="var(--paper)" stroke="var(--infra)" stroke-width="2"/>
+          <text class="region-label" x="852" y="438" text-anchor="middle" fill="var(--infra)">ТИХАТА МРЕЖА</text>
+          <g>
+            <circle cx="815" cy="462" r="3" fill="var(--infra)"/>
+            <text class="place" x="825" y="466">Ток, вода, трафик — сами се крепят</text>
+            <circle cx="812" cy="490" r="3" fill="var(--infra)"/>
+            <text class="place" x="822" y="494">Авариите се оправят преди да ги усетиш</text>
+          </g>
+        </g>
+
+        <!-- Остров: Роботите са мебел (долу вдясно) -->
+        <g>
+          <path d="M690 630 C 682 600, 725 578, 775 584 C 825 578, 865 602, 870 640
+                   C 878 675, 845 707, 798 712 C 750 720, 698 700, 692 665 C 688 648, 696 645, 690 630 Z"
+                fill="var(--paper)" stroke="var(--robo)" stroke-width="2"/>
+          <text class="region-label" x="780" y="616" text-anchor="middle" fill="var(--robo)">РОБОТИТЕ СА МЕБЕЛ</text>
+          <g>
+            <circle cx="725" cy="644" r="3" fill="var(--robo)"/>
+            <text class="place" x="735" y="648">Скучни като пералнята — и толкова полезни</text>
+            <circle cx="720" cy="672" r="3" fill="var(--robo)"/>
+            <text class="place" x="730" y="676">Гледат възрастни, строят, садят</text>
+            <circle cx="735" cy="699" r="3" fill="var(--robo)"/>
+            <text class="place" x="745" y="703">Никой вече не им прави снимки</text>
+          </g>
+        </g>
+
+        <!-- Остров: Островът на хората (долу в средата/ляво) -->
+        <g>
+          <path d="M250 650 C 240 615, 290 588, 350 596 C 410 588, 460 615, 466 660
+                   C 475 700, 435 738, 378 744 C 320 753, 260 730, 253 690 C 248 670, 258 668, 250 650 Z"
+                fill="var(--paper)" stroke="var(--human)" stroke-width="2.5"/>
+          <text class="region-label" x="358" y="632" text-anchor="middle" fill="var(--human)">ОСТРОВЪТ НА ХОРАТА</text>
+          <g>
+            <circle cx="295" cy="662" r="3" fill="var(--human)"/>
+            <text class="place" x="305" y="666">Хората дават посоката и вкуса</text>
+            <circle cx="290" cy="692" r="3" fill="var(--human)"/>
+            <text class="place" x="300" y="696">Работната седмица се сви — животът се разшири</text>
+            <circle cx="305" cy="722" r="3" fill="var(--human)"/>
+            <text class="place" x="315" y="726">Най-ценното умение: да знаеш какво искаш</text>
+          </g>
+        </g>
+
+        <!-- Остров: Фаровете (вляво в средата) -->
+        <g>
+          <path d="M110 440 C 104 412, 142 392, 185 398 C 226 394, 258 418, 262 452
+                   C 268 484, 238 512, 196 516 C 155 522, 114 504, 111 472 Z"
+                fill="var(--paper)" stroke="var(--light)" stroke-width="2"/>
+          <text class="region-label" x="186" y="432" text-anchor="middle" fill="var(--light)">ФАРОВЕТЕ</text>
+          <g>
+            <circle cx="140" cy="456" r="3" fill="var(--light)"/>
+            <text class="place" x="150" y="460">Надзорът гледа Ковачницата, не обратно</text>
+            <circle cx="137" cy="484" r="3" fill="var(--light)"/>
+            <text class="place" x="147" y="488">Проверката е занаят и професия</text>
+          </g>
+          <!-- фар -->
+          <g transform="translate(238, 415)">
+            <path d="M-4 22 L-2 0 L2 0 L4 22 Z" fill="var(--light)"/>
+            <path d="M-5 0 L5 0 L3 -6 L-3 -6 Z" fill="var(--light)"/>
+            <path d="M6 -4 L20 -10 M6 -1 L22 -1" stroke="var(--light)" stroke-width="1" opacity=".6"/>
+          </g>
+        </g>
+
+        <!-- Мъглив остров: 2040 (долу вляво) -->
+        <g opacity=".8">
+          <path d="M80 640 C 75 618, 102 602, 132 606 C 160 602, 178 620, 179 645
+                   C 182 668, 160 688, 130 690 C 102 694, 80 680, 78 660 Z"
+                fill="var(--paper)" stroke="var(--fog)" stroke-width="2" stroke-dasharray="5 4"/>
+          <text class="region-label" x="129" y="634" text-anchor="middle" fill="var(--fog)">2040 · ?</text>
+          <text class="place" x="129" y="656" text-anchor="middle">свят, който сам си</text>
+          <text class="place" x="129" y="671" text-anchor="middle">задава въпросите</text>
+        </g>
+        <g stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 6" fill="none" opacity=".6">
+          <path d="M200 500 C 170 540, 150 570, 135 600"/>
+        </g>
+
+        <!-- лодки -->
+        <g transform="translate(560, 560)" opacity=".8">
+          <path d="M-14 4 L14 4 L8 10 L-8 10 Z" fill="var(--muted)"/>
+          <path d="M0 4 L0 -14 L10 -3 L1 -3" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+        </g>
+        <g transform="translate(330, 250)" opacity=".6">
+          <path d="M-10 3 L10 3 L6 8 L-6 8 Z" fill="var(--muted)"/>
+          <path d="M0 3 L0 -10 L7 -2 L1 -2" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
+        </g>
+
+        <!-- вълни и надпис на морето -->
+        <g stroke="var(--line)" stroke-width="1" fill="none" opacity=".5">
+          <path d="M60 810 q 20 -6 40 0 t 40 0"/>
+          <path d="M780 780 q 20 -6 40 0"/>
+          <path d="M520 200 q 16 -5 32 0"/>
+          <path d="M620 760 q 16 -5 32 0"/>
+        </g>
+        <text class="sea-label" x="460" y="845" text-anchor="middle">СЪЩОТО ТИХО МОРЕ · САМО ПО-ДЪЛБОКО</text>
+
+        <!-- компас -->
+        <g transform="translate(858, 300)" stroke="var(--muted)" fill="none" opacity=".8">
+          <circle r="18"/>
+          <path d="M0 -18 L4 0 L0 18 L-4 0 Z" fill="var(--muted)" stroke="none"/>
+          <text class="place" y="-26" text-anchor="middle">С</text>
+        </g>
+      </svg>
+    </div>
+  </figure>
+
+  <div class="legend">
+    <section class="card">
+      <h2><span class="dot" style="background:var(--forge)"></span>Ковачницата</h2>
+      <ul>
+        <li>Мъглата от 2030 се вдигна: моделите наистина правят следващите модели.</li>
+        <li>Но духалото има спирачка — всяка нова версия минава през проверка, преди да види света.</li>
+        <li>Прогресът е бърз, темпото е избрано. Никой не тича само защото може.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--sci)"></span>Науката-фабрика</h2>
+      <ul>
+        <li>Откритието вече не е събитие, а поточна линия: хипотеза, симулация, робот-лаборатория, резултат.</li>
+        <li>Лекарства, скроени за един конкретен човек.</li>
+        <li>Чистата енергия е решена дотолкова, че стана скучна тема.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--agents)"></span>Агентната икономика</h2>
+      <ul>
+        <li>Нормална фирма: един човек с идея и хиляда агента, които я строят.</li>
+        <li>Софтуерът се пише, тества и поддържа сам; хората решават какво да съществува.</li>
+        <li>Агенти купуват услуги от агенти — с бюджети, дадени им от хора.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--infra)"></span>Тихата мрежа</h2>
+      <ul>
+        <li>Ток, вода, трафик, логистика — крепят се сами, невидимо.</li>
+        <li>Авариите се предвиждат и оправят, преди някой да ги е усетил.</li>
+        <li>Най-добрата инфраструктура е тази, за която никой не говори.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--robo)"></span>Роботите са мебел</h2>
+      <ul>
+        <li>Станаха скучни като пералнята — това е най-големият им успех.</li>
+        <li>Гледат възрастни хора, строят къщи, садят гори.</li>
+        <li>Никой вече не им прави снимки. Просто ги има.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--human)"></span>Островът на хората</h2>
+      <ul>
+        <li>Машините вършат работата; хората дават посоката, вкуса и „защо“-то.</li>
+        <li>Работната седмица се сви, животът се разшири — повече занаят, градина, време.</li>
+        <li>Най-ценното умение на 2035: да знаеш какво всъщност искаш.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--light)"></span>Фаровете</h2>
+      <ul>
+        <li>Цял остров, чиято работа е да гледа Ковачницата — а не обратното.</li>
+        <li>Проверката на модели е занаят, професия и институция.</li>
+        <li>Светът е тих, защото някой будува. Тишината е поддържана, не случайна.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2><span class="dot" style="background:var(--fog)"></span>2040 · ?</h2>
+      <ul>
+        <li>Новият мъглив остров. Традицията повелява да има един.</li>
+        <li>Хипотезата: свят, който сам си задава въпросите — и сам избира кои да не отваря.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>Хипотеза, не прогноза. Но ако светът на 2035 е тих — ще е защото фаровете са светили през целия път дотук.</footer>
+</div>
